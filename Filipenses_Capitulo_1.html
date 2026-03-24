@@ -5,23 +5,40 @@
     <title>Filipenses_Capitulo_1.md | Exported</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      #theme-toggle {
-        position: relative;
-        top: 30px;
-        left: 790px;
+      .theme-toggle {
+        position: absolute;
         z-index: 9999;
-        border: 1px solid var(--borderColor-default);
+        border: none;
         background: var(--bgColor-muted);
-        color: var(--fgColor-default);
+        color: var(--fgColor-muted);
         border-radius: 8px;
-        padding: 6px 10px;
+        border: 1px solid var(--borderColor-default);
+        padding: 6px 5px;
         cursor: pointer;
         font-size: 13px;
       }
+
+      /* Computador */
+      @media (min-width: 768px) {
+        .theme-toggle {
+          top: 45px;
+          right: 230px;
+        }
+      }
+
+      /* Celular */
+      @media (max-width: 767px) {
+        .theme-toggle {
+          top: 15px;
+          right: 15px;
+          font-size: 12px;
+          padding: 5px 8px;
+        }
+      }
     </style>
   </head>
-  <body class="markdown-body">
-    <button id="theme-toggle" type="button">Alternar tema</button>
+  <body class="markdown-body" data-theme="light">
+    <button id="theme-toggle" type="button" class="theme-toggle">Alternar tema</button>
     <p dir="auto"><a data-tooltip-position="top" aria-label="50_Filipenses" data-href="50_Filipenses" href="50_Filipenses" class="internal-link" rel="noopener nofollow">&lt; VOLTAR</a></p>
 <h1 data-heading="Filipenses Capítulo 1" dir="auto" id="Filipenses-Capítulo-1">Filipenses Capítulo 1</h1>
 <p dir="auto" id="^a6e9d8"><strong>1</strong> Paulo e Timóteo, servos de Cristo, a todos os santos em Cristo Jesus que estão com os bispos e diáconos em Filipos: ( <a data-tooltip-position="top" aria-label="Ter a consciência de que ser pertecente a Cristo" data-href="#Ter a consciência de que ser pertecente a Cristo" href="#Ter-a-consciência-de-que-ser-pertecente-a-Cristo" class="internal-link" rel="noopener nofollow">1</a> ) </p>
@@ -51,7 +68,7 @@
 <h6 data-heading="**-> Ser grato a Deus por sua obra na vida de outras pessoas idependente do sofrimento que esteja passando**" dir="auto" id="**->-Ser-grato-a-Deus-por-sua-obra-na-vida-de-outras-pessoas-idependente-do-sofrimento-que-esteja-passando**"><strong>-&gt; Ser grato a Deus por sua obra na vida de outras pessoas idependente do sofrimento que esteja passando</strong></h6>
 <p dir="auto">3: Paulo é grato a Deus pela vida, pela obra do Senhor executada na vida e através da vida dos irmãos. (<a data-tooltip-position="top" aria-label="^1741ae" data-href="#^1741ae" href="#^1741ae" class="internal-link" rel="noopener nofollow">v3</a>) </p>
 <h6 data-heading="Orar sulplicando a Deus em prol dos outros aos mesmo tempo confiando que o Senhor cuida de tudo de forma soberana" dir="auto" id="Orar-sulplicando-a-Deus-em-prol-dos-outros-aos-mesmo-tempo-confiando-que-o-Senhor-cuida-de-tudo-de-forma-soberana">Orar sulplicando a Deus em prol dos outros aos mesmo tempo confiando que o Senhor cuida de tudo de forma soberana</h6>
-<p dir="auto">4: <a data-tooltip-position="top" aria-label="^1741ae" data-href="#^1741ae" href="#^1741ae" class="internal-link" rel="noopener nofollow">v3</a> Paulo ora a Deus em favor dos irmãas. aaaaaaaaaa</p>
+<p dir="auto">4: <a data-tooltip-position="top" aria-label="^1741ae" data-href="#^1741ae" href="#^1741ae" class="internal-link" rel="noopener nofollow">v3</a> Paulo ora a Deus em favor dos irmãas. vvvvvvvvvvvv</p>
 <p dir="auto">Se alegrar pelo que o Senhor tem feito na vida de outras pessoas e pelo empenho dos irmãos na obra do Senhor.<br>
 : Paulo se alegra pela obra do Senhor executada na e através da vida dos outros irmãos.</p>
 <p dir="auto">Orar sendo grato e se alegrando pela obra do Senhor na vida de outros irmãos<br>
@@ -77,13 +94,40 @@ o texto<br>
 quais os temas abordados no texto EX: ALEGRIA, SOFRIMENTO</p>
 <p dir="auto"><a data-tooltip-position="top" aria-label="^adbfc3" data-href="#^adbfc3" href="#^adbfc3" class="internal-link" rel="noopener nofollow">asasdas</a></p>
     <script>
-       document.getElementById('theme-toggle').addEventListener('click', () => {
-          const body = document.documentElement.querySelector('body');
-          const theme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-          body.setAttribute('data-theme', theme);
-        });
       (function () {
-       
+        var STORAGE_KEY = "export-theme";
+        var LEGACY_KEY = "theme";
+        var body = document.body;
+        var button = document.getElementById("theme-toggle");
+        if (!body || !button) return;
+
+        function loadSavedTheme() {
+          try {
+            var saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_KEY);
+            if (saved === "dark" || saved === "light") return saved;
+          } catch (e) {}
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        function saveTheme(theme) {
+          try {
+            localStorage.setItem(STORAGE_KEY, theme);
+            localStorage.setItem(LEGACY_KEY, theme);
+          } catch (e) {}
+        }
+
+        function applyTheme(theme) {
+          body.setAttribute("data-theme", theme);
+          saveTheme(theme);
+        }
+
+        var currentTheme = loadSavedTheme();
+        applyTheme(currentTheme);
+
+        button.addEventListener("click", function () {
+          currentTheme = currentTheme === "dark" ? "light" : "dark";
+          applyTheme(currentTheme);
+        });
       })();
     </script>
   </body>

@@ -1175,6 +1175,36 @@
   }
 }
 
+.theme-toggle {
+  position: absolute;
+  z-index: 9999;
+  border: none;
+  background: var(--bgColor-muted);
+  color: var(--fgColor-muted);
+  border-radius: 8px;
+  border: 1px solid var(--borderColor-default);
+  padding: 6px 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Computador */
+@media (min-width: 768px) {
+  .theme-toggle {
+    top: 45px;
+    right: 230px;
+  }
+}
+
+/* Celular */
+@media (max-width: 767px) {
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
 
 
 
