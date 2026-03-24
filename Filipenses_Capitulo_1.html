@@ -51,7 +51,7 @@
 <h6 data-heading="**-> Ser grato a Deus por sua obra na vida de outras pessoas idependente do sofrimento que esteja passando**" dir="auto" id="**->-Ser-grato-a-Deus-por-sua-obra-na-vida-de-outras-pessoas-idependente-do-sofrimento-que-esteja-passando**"><strong>-&gt; Ser grato a Deus por sua obra na vida de outras pessoas idependente do sofrimento que esteja passando</strong></h6>
 <p dir="auto">3: Paulo é grato a Deus pela vida, pela obra do Senhor executada na vida e através da vida dos irmãos. (<a data-tooltip-position="top" aria-label="^1741ae" data-href="#^1741ae" href="#^1741ae" class="internal-link" rel="noopener nofollow">v3</a>) </p>
 <h6 data-heading="Orar sulplicando a Deus em prol dos outros aos mesmo tempo confiando que o Senhor cuida de tudo de forma soberana" dir="auto" id="Orar-sulplicando-a-Deus-em-prol-dos-outros-aos-mesmo-tempo-confiando-que-o-Senhor-cuida-de-tudo-de-forma-soberana">Orar sulplicando a Deus em prol dos outros aos mesmo tempo confiando que o Senhor cuida de tudo de forma soberana</h6>
-<p dir="auto">4: <a data-tooltip-position="top" aria-label="^1741ae" data-href="#^1741ae" href="#^1741ae" class="internal-link" rel="noopener nofollow">v3</a> Paulo ora a Deus em favor dos irmãas. ccccccccccc</p>
+<p dir="auto">4: <a data-tooltip-position="top" aria-label="^1741ae" data-href="#^1741ae" href="#^1741ae" class="internal-link" rel="noopener nofollow">v3</a> Paulo ora a Deus em favor dos irmãas. vvvvvvvvvvvv</p>
 <p dir="auto">Se alegrar pelo que o Senhor tem feito na vida de outras pessoas e pelo empenho dos irmãos na obra do Senhor.<br>
 : Paulo se alegra pela obra do Senhor executada na e através da vida dos outros irmãos.</p>
 <p dir="auto">Orar sendo grato e se alegrando pela obra do Senhor na vida de outros irmãos<br>
@@ -77,59 +77,12 @@ o texto<br>
 quais os temas abordados no texto EX: ALEGRIA, SOFRIMENTO</p>
 <p dir="auto"><a data-tooltip-position="top" aria-label="^adbfc3" data-href="#^adbfc3" href="#^adbfc3" class="internal-link" rel="noopener nofollow">asasdas</a></p>
     <script>
-      (function () {
-        var STORAGE_KEY = "export-theme";
-        function collectThemesFromCSSRules(rules, out) {
-          if (!rules) return;
-          for (var i = 0; i < rules.length; i++) {
-            var rule = rules[i];
-            if (rule.cssRules) collectThemesFromCSSRules(rule.cssRules, out);
-            if (!rule.selectorText) continue;
-            var regex = /[data-theme=["']?([a-zA-Z0-9_-]+)["']?]/g;
-            var match;
-            while ((match = regex.exec(rule.selectorText)) !== null) {
-              if (out.indexOf(match[1]) === -1) out.push(match[1]);
-            }
-          }
-        }
-        function getAvailableThemes() {
-          var themes = [];
-          for (var i = 0; i < document.styleSheets.length; i++) {
-            var sheet = document.styleSheets[i];
-            try {
-              collectThemesFromCSSRules(sheet.cssRules || sheet.rules, themes);
-            } catch (e) {}
-          }
-          return themes.length ? themes : ["light", "dark"];
-        }
-        function getInitialTheme() {
-          var themes = getAvailableThemes();
-          try {
-            var saved = localStorage.getItem(STORAGE_KEY);
-            if (saved && themes.indexOf(saved) !== -1) return saved;
-          } catch (e) {}
-          if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches && themes.indexOf("dark") !== -1) return "dark";
-          if (themes.indexOf("light") !== -1) return "light";
-          return themes[0];
-        }
-        function applyTheme(theme) {
-          if (document.body) {
-            document.body.setAttribute("data-theme", theme);
-          }
-          try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
-        }
-        var current = getInitialTheme();
-        applyTheme(current);
-        var btn = document.getElementById("theme-toggle");
-        if (btn) {
-          btn.addEventListener("click", function () {
+      btn.addEventListener("click", function () {
             var themes = getAvailableThemes();
             var idx = themes.indexOf(current);
             current = themes[(idx + 1) % themes.length];
             applyTheme(current);
           });
-        }
-      })();
     </script>
   </body>
 </html>
